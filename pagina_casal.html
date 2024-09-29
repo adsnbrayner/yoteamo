@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página do Casal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="coupleNameDisplay"></h2>
+        <p id="loveTextDisplay"></p>
+        <p id="relationshipDateDisplay"></p>
+        <p id="timeTogetherDisplay"></p>
+        <div id="previewPhotos"></div>
+    </div>
+
+    <script>
+        // Recuperar os dados do localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const coupleName = localStorage.getItem('coupleName');
+            const loveText = localStorage.getItem('loveText');
+            const relationshipDate = new Date(localStorage.getItem('relationshipDate'));
+            const photoUrls = JSON.parse(localStorage.getItem('photoUrls')) || []; // Recupera as URLs das fotos
+
+            // Exibir os dados na página
+            document.getElementById('coupleNameDisplay').textContent = coupleName || 'Nome do Casal';
+            document.getElementById('loveTextDisplay').textContent = loveText || 'Texto de amor aqui...';
+            document.getElementById('relationshipDateDisplay').textContent = `Início do Relacionamento: ${relationshipDate.toLocaleString()}`;
+            document.getElementById('timeTogetherDisplay').textContent = calculateTimeTogether(relationshipDate);
+
+            // Atualizar o tempo juntos a cada segundo
+            setInterval(() => {
+                document.getElementById('timeTogetherDisplay').textContent = calculateTimeTogether(relationshipDate);
+            }, 1000);
+
+            // Adicionar fotos ao DOM
+            const previewPhotos = document.getElementById('previewPhotos');
+            photoUrls.forEach(url => {
+                const img = document.createElement('img');
+                img.src = url;
+                img.className = 'photo'; // Adicione uma classe para estilização
+                img.style.maxWidth = '100px'; // Ajuste o tamanho
+                img.style.margin = '10px'; // Espaçamento
+                previewPhotos.appendChild(img);
+            });
+        });
+
+        // Função para calcular o tempo juntos
+        function calculateTimeTogether(startDate) {
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const months = Math.floor(days / 30);
+            const years = Math.floor(days / 365);
+            return `${years} anos, ${months % 12} meses, ${days % 30} dias`;
+        }
+    </script>
+</body>
+</html>
+
+
+

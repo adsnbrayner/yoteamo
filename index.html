@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página do Casal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="preview" id="previewContainer">
+            <h2>Pré-visualização</h2>
+            <h3 id="previewName">Nome do Casal</h3>
+            <p id="previewText">Texto de amor aqui...</p>
+            <p id="previewDate">Início do Relacionamento: dd/mm/aaaa hh:mm</p>
+            <p id="previewTimeTogether">Tempo Juntos: 0 anos, 0 meses, 0 dias</p>
+            <div id="previewPhotos"></div>
+        </div>
+        <form id="coupleForm">
+            <label for="coupleName">Nome do Casal:</label>
+            <input type="text" id="coupleName" required placeholder="Digite o nome do casal">
+
+            <label for="loveText">Texto de Amor:</label>
+            <textarea id="loveText" rows="4" required placeholder="Digite seu texto aqui..."></textarea>
+
+            <label for="relationshipDate">Data e Hora do Início do Relacionamento:</label>
+            <input type="datetime-local" id="relationshipDate" required>
+
+            <label for="photoUpload">Carregar até 5 fotos:</label>
+            <input type="file" id="photoUpload" accept="image/*" multiple required>
+
+            <button type="button" id="generateButton">Gerar Página</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
