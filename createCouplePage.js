@@ -35,7 +35,7 @@ exports.handler = async (event) => {
 
     // Aqui você precisaria usar um serviço de hospedagem de arquivos, como AWS S3, para servir o HTML gerado.
     // Por simplicidade, retornamos uma URL fictícia para o exemplo.
-    const pageUrl = `https://main--yoteamo.netlify.app/${coupleName}/index.html`; 
+    const pageUrl = `https://66f8cb9be1063baf6674f789--yoteamo.netlify.app/${coupleName}/index.html`; 
 
     return {
         statusCode: 200,
